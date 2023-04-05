@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantastic Frenzy</title>
+    <style>
+        .destaque {
+            color: red;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+
+        .cartas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 0;
+        }
+
+        .carta {
+            list-style: none;
+            text-align: center;
+            border: 1px solid;
+            width: 400px;
+            padding: 0;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .imagem {
+            margin: 0;
+        }
+
+        .imagem img {
+            width: 400px;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .imagem img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="destaque">Fantastic Frenzy</h1>
+    <h3>Frenesi Fantastica: A guerra dos mundos</h3>
+    <p>Jogo de cartas de fantasia sombria com criaturas poderosas, magia negra e batalhas épicas. Torne-se o Senhor da
+        Devastação ou enfrente os terríveis Ceifadores. Desvende segredos ancestrais e domine o mundo das trevas.
+        Prepare-se para um confronto épico! </p>
+    <hr>
+
+    <ul class="cartas"></ul>
+
+    <script>
+        const personagens = [
+            {
+                foto: "img/DragãoVermelho.jpeg",
+                nome: "Senhor da Devastação",
+                frase: "Minhas chamas consomem tudo que encontro, nenhum desafio é grande o suficiente para mim.",
+                descricao: "Dragão Senhor da Devastação, nasceu faminto por destruição e conquista. Preso por anos, é libertado para buscar vingança. Em sua jornada, almeja ser o Senhor Supremo dos reinos, espalhando caos e terror. Uma batalha épica se aproxima.."
+            },
+            {
+                foto: "img/LordeDaPerdição.jpeg",
+                nome: "Lorde da Perdição",
+                frase: "O poder que eu possuo é a minha arma mais mortal. Nenhum herói jamais sobreviveu à minha ira impiedosa.",
+                descricao: "Lorde da Perdição, um nobre caído que busca vingança com poderes sombrios. Um exército de criaturas das sombras e demônios ao seu comando. Objetivo: dominar todas as terras conhecidas. Temido e adorado como um deus das trevas."
+            },
+            {
+                foto: "img/DragãoMedonho.jpeg",
+                nome: "Terror do Abismo",
+                frase: "O medo é o meu alimento, o terror é o meu combustível. Nenhum pesadelo é mais aterrorizante do que eu",
+                descricao: "O Terror do Abismo é um dragão temido por seu rugido ensurdecedor e suas garras afiadas. Ele espera em sua caverna sombria por um desafiante corajoso, mas até agora ninguém foi capaz de vencê-lo. Sobreviver à sua fúria deixa marcas profundas. Enquanto ele continua a aterrorizar a região, ainda há esperança de encontrar um herói capaz de acabar com seu reinado de terror."
+            },
+            {
+                foto: "img/LobosDaMorte.jpeg",
+                nome: "Lobos da morte",
+                frase: "Eles são os guardiões das trevas, os senhores da noite. Sua mordida é mortal e seus olhos matam com o fogo da escuridão.",
+                descricao: "Os Lobos da Morte, criaturas amaldiçoadas com pelagem negra e habilidades sombrias, surgiram em um mundo mergulhado em trevas. Sedentos por carne e sangue, aterrorizam os intrépidos que se aventuram nas florestas noturnas. Vistos como punição dos deuses, são temidos e respeitados por sua feroz natureza."
+            },
+            {
+                foto: "img/SombrasDaMorte.jpeg",
+                nome: "Sombras da morte",
+                frase: "As Sombras da Morte são os filhos da escuridão, cujas habilidades ocultas os tornam temidos e respeitados em iguais medidas.",
+                descricao: "As Sombras da Morte são assassinos implacáveis, surgidos de um antigo ritual para vencer a morte. Com habilidades ocultas e conhecimento profundo da escuridão, eles eram os mais temidos do reino. Contudo, seu poder cresceu a um preço alto, se tornando menos humanos e mais criaturas das sombras. Apesar de terem desaparecido, seu legado ainda é lembrado por aqueles que temiam sua lâmina afiada e olhar gélido."
+            },
+            {
+                foto: "img/Ceifadores.jpeg",
+                nome: "Ceifadores",
+                frase: "A morte não é o fim para os Ceifadores, mas sim o início de um novo começo.",
+                descricao: "Os Ceifadores eram guias que levavam as almas dos mortos para o mundo além, vestidos com capas negras e portando foices. Eles eram temidos e respeitados, indicando o destino selado de uma pessoa. No entanto, com o tempo, os Ceifadores começaram a questionar seu papel e descobriram que podiam usar sua habilidade para ajudar as pessoas em vida, orientando-as em momentos difíceis. Agora, os Ceifadores se tornaram protetores do equilíbrio entre vida e morte, prontos para intervir quando necessário."
+            },
+            {
+                foto: "img/Maligno.jpeg",
+                nome: "Assasinos da noite",
+                frase: "Nas trevas da noite, os Assasinos da noite espreitam, prontas para devorar qualquer coisa em seu caminho.",
+                descricao: "Os Assassinos da Noite são superpredadores com habilidades impressionantes que habitavam um mundo sombrio e hostil. Eles possuem velocidade e agilidade incríveis, sendo capazes de caçar qualquer tipo de presa. Sua aparência é assustadora, com garras afiadas, presas afiadas e olhos brilhantes. Dizem que foram criados por uma entidade obscura com o objetivo de semear caos e destruição. Por muitos anos, os Assassinos da Noite dominaram as florestas e planícies, aterrorizando as criaturas que se aventuravam em seus territórios. "
+            },
+            {
+                foto: "img/SentinelasDaTorre.jpeg",
+                nome: "Sentinelas da Torre",
+                frase: "Nós somos os Sentinelas da Torre, os guardiões incansáveis ate a morte.",
+                descricao: "Os Guardiões da Torre Obscura são uma elite de guardas treinados para proteger a lendária Torre Obscura, um local místico que contém poderes inimagináveis. Eles são a última linha de defesa contra aqueles que buscam usurpar os segredos e poderes da torre, e são conhecidos por sua habilidade e devoção à proteção do local sagrado.."
+            },
+            {
+                foto: "img/ArcanoSombrio.jpeg",
+                nome: "Arcanos Sombrios",
+                frase: "Somos os mestres das trevas, detentores do conhecimento proibido, e nossa magia negra é poderosa além da imaginação.",
+                descricao: "Os Arcanos Sombrios são uma elite de magos negros que dominam as artes ocultas e proibidas da magia negra. Reclusos e sinistros, eles buscam poder e domínio sobre os reinos, usando sua magia para fins obscuros e nefastos. Sua origem remonta a tempos ancestrais, quando os primeiros magos descobriram os segredos obscuros da magia negra e se tornaram obcecados pelo poder que ela proporcionava. Ao longo dos anos, os Arcanos Sombrios se tornaram uma organização secreta, operando nas sombras e manipulando os eventos em busca de seu objetivo final: alcançar a supremacia mágica e estabelecer seu domínio sobre todos os reinos conhecidos. Seus poderes são temidos e respeitados, e sua busca implacável pelo poder não conhece limites. Eles são vistos como uma ameaça por , e apenas oscorajosos se atrevem a enfrentá-los em sua busca pelo domínio mágico."
+            },
+            {
+                foto: "img/DeusDaDestruição.jpeg",
+                nome: "Astaroth",
+                frase: "Sob minha fúria, tudo se desfaz em cinzas e ruínas. Sou a personificação da destruição, o flagelo que consome os mundos.",
+                descricao: "Há muito tempo, quando os deuses ainda caminhavam entre os mortais, nasceu Astaroth, o Desus da Destruição. Ele era temido e reverenciado como uma entidade cósmica capaz de trazer a ruína a qualquer mundo que ousasse desafiá-lo. Sua fúria era incontrolável, e seu poder era incomensurável. Em sua busca implacável pela destruição, ele devastou inúmeros reinos e civilizações, deixando apenas cinzas e ruínas por onde passava. Sua presença era um sinal de caos e aniquilação, e muitos o temiam como uma força incontrolável do universo. Astaroth não tinha lealdade a nenhum lado, e sua única motivação era a aniquilação total. Ele era uma figura misteriosa, envolta em sombras e lendas, e poucos se atreviam a enfrentá-lo. Aqueles que ousavam cruzar seu caminho eram rapidamente consumidos por sua ira, sendo engolidos pela destruição avassaladora que ele trazia consigo. Sua lenda perdurou por gerações, como um mito sombrio e aterrorizante, deixando um rastro de desolação por onde passava."
+            },
+        ];
+
+        personagens.forEach(function (carta) {
+            let conteudo = "<li class='carta'>";
+            conteudo += `<p class='imagem'><img src="${carta.foto}" width="300"></p>`
+            conteudo += `<h2 class='nome destaque'>${carta.nome}<h2>`;
+            conteudo += `<p class='frase'>${carta.frase}</p>`;
+            conteudo += `<p class='historia'>${carta.descricao}</p>`;
+            conteudo += `</li>`
+            document.querySelector(".cartas").innerHTML += conteudo;
+        })
+    </script>
+</body>
+
+</html>

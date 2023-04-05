@@ -1,0 +1,46 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+:root {
+    --destaque: red;
+}
+
+.destaque {
+    color: var(--destaque);
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.imagem img {
+    width: 25vw;
+    aspect-ratio: 1/1;
+}
+
+.cartas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.carta {
+    width: 45vw;
+    list-style: none;
+    display: grid;
+    border-bottom: 1px solid black;
+    place-items: center;
+}
+
+@media (max-width:850px) {
+    .imagem img{
+        width: 75vw;
+    }
+
+    .cartas {
+        grid-template-columns: 1fr;
+    }
+
+    .carta {
+        width: 75vw;
+    }
+}
